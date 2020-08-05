@@ -1,0 +1,250 @@
+{% block content %} {% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title></title>
+
+    <style>
+
+        /* default margin = 0 while printing */
+        @media print {
+            @page { margin: 0; }
+        }
+        body {
+            margin: 0;
+            height: 100%;
+            font-family: Arial, Helvetica;
+        }
+        
+        table,
+        tr,
+        th,
+        td {
+            padding: none;
+            margin: none;
+            border-collapse: collapse;
+        }
+        
+        body,
+        div,
+        span,
+        td,
+        tr,
+        table,
+        p {
+            font-size: 13px;
+        }
+        
+        /* top-section of the template */
+        .top-section {
+            margin: 10px 30px 0px 60px;
+        }
+        
+        /* bottom section i.e coupons */
+        .bottom-section {
+            margin: 30px;
+        }
+        
+        .logo {
+            width: 75px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .header-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin: 10px;
+        }
+        
+        .inline {
+            display: inline;
+        }
+        
+        .inline-block {
+            display: inline-block;
+        }
+        
+        .header-asset {
+            border: 1px solid #000000;
+            width: 220px;
+            vertical-align: bottom;
+            padding: 0px 20px 0px 20px;
+            float: right;
+        }
+        
+        .header-asset .asset-count {
+            font-size: 15px;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+        }
+        
+        .title-font {
+            font-size: 15px;
+        }
+        
+        .bold {
+            font-weight: bold;
+        }
+        
+        .left-column {
+            width: 50%;
+        }
+        
+        .border-bottom {
+            display: block;
+            border-bottom: 1px solid #000000;
+        }
+        
+        .table-border-dotted {
+            border-bottom: 1px dotted #000000;
+            width: 300px;
+        }
+        
+        .right-column {
+            margin-left: 10%;
+        }
+        
+        .dotted {
+            border-bottom-style: dotted;
+        }
+        
+        /* coupon content grid width = 30% (100~/30 = 3) */
+        .coupon-container {
+            width: 30%;
+            padding: 8px 8px 24px 8px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+
+        /* utility margin */
+        .ml-20 {
+            margin-left: 20px;
+        }
+        
+        .mt-100 {
+            margin-top: 100px;
+        }
+        
+        .mt-30 {
+            margin-top: 30px;
+        }
+        
+        .mt-10 {
+            margin-top: 10px;
+        }
+        .mt-5 {
+            margin-top: 5px;
+        }
+
+        /* flex: to display divs in a row */
+        .flex {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-section">
+        <div class="header">
+            <img src="{{company.logo}}" class="logo" />
+            <p class="header-title inline">{{company.name}}</span>
+                <div class="header-asset">
+                    <span class="asset-count">Aktienstimmen:  <span class="ml-20">*{{assets.count}}*</span></span>
+                </div>
+        </div>
+        <div class="mt-10">
+            <div>
+                <span class="bold">
+                Kontrollcoupon / Zutrittskarte zur 
+            </span>
+                <span class="bold">{{assembly.name}}</span>
+                <span>von
+            </span>
+            </div>
+            <div>
+                <span class="bold">{{assembly.date}}</span><span> im {{assembly.address}}</span>
+            </div>
+        </div>
+        <div class="mt-30 flex">
+
+            <div class="left-column">
+                <div class="bold border-bottom">
+                    P.P. 3123 Belo Post CH AG
+                </div><br>
+                <div>
+                    {{shareholder.get_full_name}}
+                </div>
+                <div>
+                    {{shareholder.get_stacked_address}}
+                </div>
+                <div>
+                    {{shareholder.get_stacked_address}}
+                </div>
+            </div>
+            <div class="right-column">
+                <div>
+                    Aktionärin, Aktionär:
+                </div><br/>
+                <div>
+                    Rudy Fasel Sarl
+                </div>
+                <div>
+                    {{shareholder.get_stacked_address}}
+                </div>
+                <div>
+                    {{shareholder.get_stacked_address}}
+                </div>
+            </div>
+        </div>
+        <div class="mt-100">
+            <span class="border-bottom"></span>
+            <div>
+                <p><span class="bold title-font">Vertretungsvollmacht </span> (Bitte zusammen mit dem Stimmmaterial direkt dem bevollmächtigten Aktionär übergeben) </p>
+
+                <p>lch/wir werde(n) nicht an der Generalversammlung teilnehmen und ersuche(n) hiermit folgenden im Aktienbuch eingetragenen Aktionär </p>
+            </div>
+
+            <span class="mt-10 border-bottom dotted"></span>
+            <span>
+                (Name, Vomame oder Firma und Adresse)
+            </span>
+
+            <p>mich/uns an der Generalversammlung zu vertreten.</p>
+            <table style="width: 80%;" class="mt-30">
+                <tr class="inline">
+                    <td>Datum: </td>
+                    <td class="table-border-dotted">
+                    </td>
+                    <td style="width: 100px"></td>
+                    <td>Unterschrift: </td>
+                    <td class="table-border-dotted"></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    </div>
+    <div class="bottom-section mt-30">
+            {% with ''|center:coupon_count as range %} {% for _ in range %}
+            <div class="coupon-container inline-block">
+                <div style="font-size: 10px;">{{assembly.address}} vom {{assembly.date}}</div>
+                <h3 class="mt-5">Coupon {{forloop.counter}}</h3>
+                <div class="mt-10">
+                    <span>Stimmen:</span>
+                    <span class="ml-20">*{{assets.count}}*</span>
+                </div>
+            </div>
+            {% endfor %} {% endwith %}
+    </div>
+
+</body>
+
+</html>
+{% endblock %}
