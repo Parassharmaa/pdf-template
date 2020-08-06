@@ -8,11 +8,14 @@
     <title></title>
 
     <style>
-
         /* default margin = 0 while printing */
+        
         @media print {
-            @page { margin: 0; }
+            @page {
+                margin: 0;
+            }
         }
+        
         body {
             margin: 0;
             height: 100%;
@@ -37,15 +40,18 @@
         p {
             font-size: 13px;
         }
-        
         /* top-section of the template */
-        .top-section {
-            margin: 10px 30px 0px 60px;
-        }
         
+        .top-section {
+            margin: 10px 50px 0px 70px;
+        }
         /* bottom section i.e coupons */
+        
         .bottom-section {
-            margin: 30px;
+            margin: 30px 10px 10px 10px;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
         }
         
         .logo {
@@ -55,7 +61,7 @@
         }
         
         .header-title {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: bold;
             margin: 10px;
         }
@@ -112,17 +118,14 @@
         .dotted {
             border-bottom-style: dotted;
         }
-        
         /* coupon content grid width = 30% (100~/30 = 3) */
-        .coupon-container {
-            width: 30%;
-            padding: 8px 8px 24px 8px;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
         
-
+        .coupon-container {
+            width: 29%;
+            padding: 12px 13px 18px 13px;
+        }
         /* utility margin */
+        
         .ml-20 {
             margin-left: 20px;
         }
@@ -131,18 +134,71 @@
             margin-top: 100px;
         }
         
+        .mt-40 {
+            margin-top: 50px;
+        }
+        
         .mt-30 {
             margin-top: 30px;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
         }
         
         .mt-10 {
             margin-top: 10px;
         }
+        
         .mt-5 {
             margin-top: 5px;
         }
-
+        
+        .fs-11 {
+            font-size: 11px;
+        }
+        
+        .mt-18 {
+            margin-top: 18px;
+        }
+        
+        .fs-13 {
+            font-size: 13px;
+        }
+        
+        .fs-17 {
+            font-size: 16px;
+        }
+        
+        .fs-20 {
+            font-size: 18px;
+        }
+        
+        .fs-13 {
+            font-size: 13px;
+        }
+        
+        .fs-10 {
+            font-size: 10px;
+        }
+        
+        .fs-8 {
+            font-size: 8px;
+        }
+        
+        .mt-15 {
+            margin-top: 15px;
+        }
+        
+        .fs-12 {
+            font-size: 12px;
+        }
+        
+        .fs-15 {
+            font-size: 15px;
+        }
         /* flex: to display divs in a row */
+        
         .flex {
             display: flex;
         }
@@ -206,12 +262,12 @@
         <div class="mt-100">
             <span class="border-bottom"></span>
             <div>
-                <p><span class="bold title-font">Vertretungsvollmacht </span> (Bitte zusammen mit dem Stimmmaterial direkt dem bevollmächtigten Aktionär übergeben) </p>
+                <span><span class="bold fs-17">Vertretungsvollmacht </span> (Bitte zusammen mit dem Stimmmaterial direkt dem bevollmächtigten Aktionär übergeben) </span>
 
                 <p>lch/wir werde(n) nicht an der Generalversammlung teilnehmen und ersuche(n) hiermit folgenden im Aktienbuch eingetragenen Aktionär </p>
             </div>
 
-            <span class="mt-10 border-bottom dotted"></span>
+            <span class="mt-30 border-bottom dotted"></span>
             <span>
                 (Name, Vomame oder Firma und Adresse)
             </span>
@@ -231,17 +287,17 @@
         </div>
     </div>
     </div>
-    <div class="bottom-section mt-30">
-            {% with ''|center:coupon_count as range %} {% for _ in range %}
-            <div class="coupon-container inline-block">
-                <div style="font-size: 10px;">{{assembly.address}} vom {{assembly.date}}</div>
-                <h3 class="mt-5">Coupon {{forloop.counter}}</h3>
-                <div class="mt-10">
-                    <span>Stimmen:</span>
-                    <span class="ml-20">*{{assets.count}}*</span>
-                </div>
+    <div class="bottom-section mt-40">
+        {% with ''|center:coupon_count as range %} {% for _ in range %}
+        <div class="coupon-container">
+            <div class="fs-10">{{assembly.address}} vom {{assembly.date}}</div>
+            <span class="fs-17 bold">Coupon {{forloop.counter}}</span>
+            <div class="mt-20 fs-12">
+                <span>Stimmen:</span>
+                <span class="ml-20">*{{assets.count}}*</span>
             </div>
-            {% endfor %} {% endwith %}
+        </div>
+        {% endfor %} {% endwith %}
     </div>
 
 </body>
