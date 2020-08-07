@@ -186,6 +186,10 @@
             font-size: 8px;
         }
         
+        .fs-14 {
+            font-size: 14px;
+        }
+        
         .mt-15 {
             margin-top: 15px;
         }
@@ -238,22 +242,26 @@
                 <div class="bold border-bottom">
                     P.P. 3123 Belo Post CH AG
                 </div><br>
-                <div>
-                    {{shareholder.get_full_name}}
-                </div>
                 <div style="height: 150px">
-                    {{shareholder.get_stacked_address}}
+                    <div class="fs-14">
+                        {{shareholder.get_full_name}}
+                    </div>
+                    <div class="fs-14">
+                        {{shareholder.get_stacked_address}}
+                    </div>
                 </div>
             </div>
             <div class="right-column">
                 <div>
                     Aktionärin, Aktionär:
                 </div><br/>
-                <div>
-                    Rudy Fasel Sarl
-                </div>
                 <div style="height: 150px">
-                    {{shareholder.get_stacked_address}}
+                    <div class="fs-14">
+                        {{shareholder.get_full_name}}
+                    </div>
+                    <div class="fs-14">
+                        {{shareholder.get_stacked_address}}
+                    </div>
                 </div>
             </div>
         </div>
