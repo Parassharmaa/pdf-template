@@ -13,6 +13,7 @@
         @media print {
             @page {
                 margin: 0;
+                size: A4;
             }
         }
         
@@ -121,7 +122,7 @@
         
         .coupon-container {
             width: 29%;
-            padding: 12px 13px 18px 13px;
+            padding: 15px 13px 25px 13px;
         }
         /* utility styles */
         
@@ -240,10 +241,7 @@
                 <div>
                     {{shareholder.get_full_name}}
                 </div>
-                <div>
-                    {{shareholder.get_stacked_address}}
-                </div>
-                <div>
+                <div style="height: 150px">
                     {{shareholder.get_stacked_address}}
                 </div>
             </div>
@@ -254,15 +252,12 @@
                 <div>
                     Rudy Fasel Sarl
                 </div>
-                <div>
-                    {{shareholder.get_stacked_address}}
-                </div>
-                <div>
+                <div style="height: 150px">
                     {{shareholder.get_stacked_address}}
                 </div>
             </div>
         </div>
-        <div class="mt-100">
+        <div>
             <span class="border-bottom"></span>
             <div>
                 <span><span class="bold fs-17">Vertretungsvollmacht </span> (Bitte zusammen mit dem Stimmmaterial direkt dem bevollmächtigten Aktionär übergeben) </span>
@@ -290,7 +285,7 @@
         </div>
     </div>
     </div>
-    <div class="bottom-section mt-40">
+    <div class="bottom-section mt-30">
         {% with ''|center:coupon_count as range %} {% for _ in range %}
         <div class="coupon-container">
             <div class="fs-10">{{assembly.address}} vom {{assembly.date}}</div>
